@@ -8,4 +8,5 @@ class ParentSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
+            'username',
         )

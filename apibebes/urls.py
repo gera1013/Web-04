@@ -20,9 +20,11 @@ from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 
 from babies.views import BabyViewSet
+from parent.views import ParentViewSet
 
 router = routers.DefaultRouter()
 router.register(r'babies', BabyViewSet)
+router.register(r'parents', ParentViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

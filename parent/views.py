@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from parent.models import Parent
+from parent.serializers import ParentSerializer
+
+class ParentViewSet(viewsets.ModelViewSet):
+    queryset = Parent.objects.all()
+    serializer_class = ParentSerializer

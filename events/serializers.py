@@ -10,7 +10,7 @@ class EventSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'description',
-            'type',
+            'event_type',
             'date',
             'baby',
         )

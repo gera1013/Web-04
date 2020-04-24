@@ -1,6 +1,5 @@
 from guardian.shortcuts import assign_perm
 from rest_framework import viewsets
-from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from permissions.services import APIPermissionClassFactory
@@ -27,9 +26,6 @@ class BabyViewSet(viewsets.ModelViewSet):
                     'destroy': evaluar_view,
                     'update': evaluar_view,
                     'partial_update': evaluar_view,
-                    # 'update_permissions': 'users.add_permissions'
-                    # 'archive_all_students': phase_user_belongs_to_school,
-                    # 'add_clients': True,
                 }
             }
         ),

@@ -5,9 +5,13 @@ from rest_framework.response import Response
 from permissions.services import APIPermissionClassFactory
 from events.models import Event
 from events.serializers import EventSerializer
+from babies.models import Baby
 
-def evaluar(user, obj, request):
-    return user.username == obj.baby.parent.username
+def check_baby_is_theirs(user, request):
+    _id = (request.POST).get('baby')
+    baby = Baby.objects.get(pk=_id)
+    return baby.parent.username == user.username
+
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
@@ -18,12 +22,12 @@ class EventViewSet(viewsets.ModelViewSet):
             name='EventPermission',
             permission_configuration={
                 'base': {
-                    'create': True,
+                    'create': check_baby_is_theirs,
                     'list': False,
                 },
                 'instance': {
-                    'retrieve': evaluar,
-                    'destroy': evaluar,
+                    'retrieve': 'events.view_event',
+                    'destroy': True,
                     'update': 'events.change_event',
                     'partial_update': 'events.change_event',
                 }

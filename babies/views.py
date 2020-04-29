@@ -7,6 +7,8 @@ from babies.models import Baby
 from babies.serializers import BabySerializer
 from parent.models import Parent
 
+
+# Función que revisa si el usuario que crea al bebé es el que se identifica como padre
 def check_baby_is_theirs(user, request):
     _id = (request.POST).get('parent')
     parent = Parent.objects.get(pk=_id)
@@ -16,6 +18,7 @@ class BabyViewSet(viewsets.ModelViewSet):
     queryset = Baby.objects.all()
     serializer_class = BabySerializer
 
+    # Definición de permisos para el viewset de bebés
     permission_classes = (
         APIPermissionClassFactory(
             name='BabyPermission',
@@ -26,7 +29,7 @@ class BabyViewSet(viewsets.ModelViewSet):
                 },
                 'instance': {
                     'retrieve': 'babies.view_baby',
-                    'destroy': True,
+                    'destroy': False,
                     'update': 'babies.change_baby',
                     'partial_update': 'babies.change_baby',
                 }
@@ -34,6 +37,7 @@ class BabyViewSet(viewsets.ModelViewSet):
         ),
     )
 
+    # Función que brinda los permisos de ver y cambiar bebé al usuario que lo crea 
     def perform_create(self, serializer):
         baby = serializer.save()
         user = self.request.user

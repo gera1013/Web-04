@@ -1,6 +1,7 @@
 from django.db import models
 
-
+# Clase model para eventos.
+# Campos: descripción, tipo, fecha y bebé
 class Event(models.Model):
     description = models.CharField(max_length = 500)
     event_type = models.CharField(max_length = 50)

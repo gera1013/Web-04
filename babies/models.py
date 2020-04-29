@@ -1,6 +1,7 @@
 from django.db import models
 
-
+# Clase model para eventos.
+# Campos: nombre, apellido, edad y papá (foreign key al modelo parent)
 class Baby(models.Model):
     name = models.CharField(max_length = 200)
     last_name = models.CharField(max_length = 200)

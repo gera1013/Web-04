@@ -26,10 +26,10 @@ class ParentViewSet(viewsets.ModelViewSet):
                     'list': True,
                 },
                 'instance': {
-                    'retrieve': 'parent.view_parent',
+                    'retrieve': True,
                     'destroy': False,
-                    'update': 'parent.change_parent',
-                    'partial_update': 'babies.change_parent',
+                    'update': True,
+                    'partial_update': True,
                 }
             }
         ),

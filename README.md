@@ -24,6 +24,8 @@ Cada papá debe asociarse a un usuario existente utilizando su nombre de usuario
 Cada papá puede crear cuantos bebés quiera, siempre y cuando los asocie a él cómo papá.
 Los papás NO PUEDEN:
   - Ver bebés que no sean suyos
+  - Crear bebés que no sean suyos
+  - Ver eventos de bebés que no sean suyos
   - Crear eventos a bebés que no sean suyos
   
 Los papás SÍ PUEDEN:

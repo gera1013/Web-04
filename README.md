@@ -1,15 +1,24 @@
-## API BEBES
-# Gerardo Méndez Alvarez 18239
+# API BEBES
+## Gerardo Méndez Alvarez 18239
 
 El api cuenta con medidas de autenticación.
 También permite crear papás, bebés y eventos, y visualizarlos según permisos otorgados. 
 
 Para iniciar hay que hacer login en la dirección url api/v1/token-auth/
 Hay dos usuarios predeterminados con los nombres de usuario 'Gerardo' y 'Fernando'
-Las contraseñas para ambos son 'password123' 
+Las contraseñas para ambos son 'password123'
+
+Igualmente hay papás con los mismos nombres que los usuarios, con las llaves primarias 7 y 8.
+Hay dos bebés de prueba (uno por papá) con las llaves 10 y 11.
+Hay dos eventos (uno por bebé) con las llaves 11 y 12
 **En caso de no encontrarse estos usuarios, crear usuario propio y luego crear un papá asignandolo a ese usuario**
 
-Luego de verificarse se utiliza el token para hacer todas las otras operaciones sobre el api
+Pasos para crear modelos:
+  1. Verificarse utilizando los usuarios creados o los propios
+  2. Luego de verificarse se utiliza el token para hacer todas las otras operaciones sobre el api
+  3. Crear papá utilizando el nombre del usuario actual como valor en el campo 'username'
+  4. Crear bebé utilizando el pk del papá como valor en el campo 'parent'
+  5. Crear evento utilizando el pk del bebé como valor en el campo 'bebé'
 
 Cada papá debe asociarse a un usuario existente utilizando su nombre de usuario.
 Cada papá puede crear cuantos bebés quiera, siempre y cuando los asocie a él cómo papá.
